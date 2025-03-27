@@ -3,7 +3,11 @@ body {
     margin: 0;
     font-size: 20px;
     line-height: 1.6;
-    color: #6B5E55; 
+    background-color: #FFEED2;
+    font-family: 'Montserrat',serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #6B5E55;
 }
 
 *,
@@ -14,10 +18,10 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 0 auto;
     margin: 0 auto;
 }
-
+/* Header */
 header {
     background: linear-gradient(90deg, rgba(107, 94, 85, 0.89) 0%, rgba(200, 118, 61, 0.9703) 22%, #EB7F35 50%, rgba(205, 120, 60, 0.9747) 78%, rgba(107, 94, 85, 0.89) 100%);
     padding: 20px;
@@ -32,18 +36,16 @@ h1{
     margin: 10px 0;
 }
 
-/* Навигация */
 nav {
+    justify-content: space-between;
     height: 50px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .nav-left, .nav-right {
     display: flex;
-    gap: 12px; /* Расстояние между кнопками */
+    gap: 12px; 
 }
 
 .nav-btn, .profile-btn {
@@ -63,17 +65,138 @@ nav {
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     font-size: 20px;
-    color: #FFEED2; /* Коричневый цвет текста */
-    background-color: #f5f0e100; /* Светлый фон */
+    color: #FFEED2; 
+    background-color: #f5f0e100; 
 
     cursor: pointer;
-    
 }
 
 .nav-btn:hover {
     background-color: #cacaca59;
     backdrop-filter: blur(5px);
 }
+/* Main */
 
+.filters{
+    position: absolute;
+    width: auto;
+    height: 36px;
+
+    padding: 10px 20px;
+    text-align: center;
+
+}
+.filters.active .filter-options {
+    display: block;
+  }
+  
+.filters.active .filter-arrow {
+    transform: rotate(-90deg);
+  }
+.filters button {
+    font-family: 'Montserrat', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #6B5E55;
+    background: rgba(255, 255, 255, 0.01);
+    border: 2px solid #6B5E55;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 0 1px;
+    height: 32px;
+    cursor: pointer;
+    display: inline-flex;
+    box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.1s ease;
+    backdrop-filter: blur(5px);
+
+}
+
+.filters button:hover {
+    background-color: #cacaca59;
+    backdrop-filter: blur(5px);
+}
+.filter-arrow {
+    transition: transform 0.3s ease;
+}
+
+.filter-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    padding: 8px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+.filter-option {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+.filter-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+/* Cards */
+.cards {
+    padding: 60px 30px;
+}
+
+.cards .container {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(6, 2fr); 
+    gap: 26px 26px;
+    margin: -4px 0px;
+    padding: 10px;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+    justify-content: center;
+}
+
+.card-cat-female,
+.card-cat-male,
+.card-doge-female,
+.card-doge-male{
+    overflow: hidden;
+    background: #FFF6E9;
+    box-shadow: 0px 4px 10px rgba(107, 94, 85, 0.89);
+    border-radius: 28px;
+    width: 290px;
+    height: 100%;
+    padding: 24px;
+}
+.image {
+    width: 100%;
+    height: 240px; 
+    object-fit: cover;
+}
+.card-info {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 8px; 
+}
+.icon{
+    width: 28px;
+    height: 28px;
+    padding: 0px;
+    align-items: center;
+}
+.card-info p{
+    font-size: 24px;
+    margin: 0;
+}
 
 
