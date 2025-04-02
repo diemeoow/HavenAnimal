@@ -19,13 +19,13 @@
         <div class="container">
             <nav>
                 <div class="nav-left">
-                    <button class="nav-btn">Главная</button>
-                    <button class="nav-btn">Кошечки</button>
+                    <button class="nav__btn">Главная</button>
+                    <button class="nav__btn">Кошечки</button>
                 </div>
                 <h1>Лапки & Хвостики</h1>
                 <div class="nav-right">
-                    <button class="nav-btn">Собачки</button>
-                    <button class="profile-btn">
+                    <button class="nav__btn">Собачки</button>
+                    <button class="nav__btn nav__btn--profile">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path id="Icon"
                                 d="M16.3333 18.25V16.4167C16.3333 15.4442 15.947 14.5116 15.2594 13.8239C14.5717 13.1363 13.6391 12.75 12.6667 12.75H5.33332C4.36086 12.75 3.42823 13.1363 2.7406 13.8239C2.05296 14.5116 1.66666 15.4442 1.66666 16.4167V18.25M12.6667 5.41667C12.6667 7.44171 11.025 9.08333 8.99999 9.08333C6.97495 9.08333 5.33332 7.44171 5.33332 5.41667C5.33332 3.39162 6.97495 1.75 8.99999 1.75C11.025 1.75 12.6667 3.39162 12.6667 5.41667Z"
@@ -40,31 +40,33 @@
     <main class="main">
         <div class="filters">
             <div class="container">
-                <button class="filter-gender">Пол
+                <button class="filters__btn filters__btn--gender">Пол
                     <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 14L2 8L8 2" stroke="#6B5E55" stroke-width="2.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </button>
-                <div class="filter-options">
-                    <label class="filter-option">
+                <div class="filters__options">
+                    <label class="filters__option">
                       <input type="radio" name="gender" value="male">
-                      <span class="radio"></span>
+                      <span class="filters__radio"></span>
                       Мальчик
                     </label>
-                    <label class="filter-option">
+                    <label class="filters__option">
                       <input type="radio" name="gender" value="female">
-                      <span class="radio"></span>
+                      <span class="filters__radio"></span>
                       Девочка
                     </label>
-                  </div>
-                <button class="filter-breed">Порода
+                </div>
+
+
+                <button class="filters__btn filters__btn--breed">Порода
                     <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 14L2 8L8 2" stroke="#6B5E55" stroke-width="2.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </button>
-                <button class="filter-age">Возраст
+                <button class="filters__btn filters__btn--age">Возраст
                     <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 14L2 8L8 2" stroke="#6B5E55" stroke-width="2.5" stroke-linecap="round"
                             stroke-linejoin="round" />
@@ -75,10 +77,10 @@
         <section class="cards">
             <div class="container">
                 <!-- Карточка кошечки -->
-                <div class="card-cat-female">
+                <div class="card card--cat card--female">
                     <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
+                    <div class="card__info">
+                        <span class="card__icon">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <rect width="28" height="28" fill="url(#pattern0_89_297)" />
@@ -91,14 +93,14 @@
                                         xlink:href="data:image/png;base64,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" />
                                 </defs>
                             </svg></span>
-                        <p>Имя Котика</p>
+                        <p class="card__name">Имя Котика</p>
                     </div>
                 </div>
                 <!-- Карточка кота -->
-                <div class="card-cat-male">
+                <div class="card card--cat card--male">
                     <img src="assets/images/b7893704bb147089630595b7c63bc433.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
+                    <div class="card__info">
+                        <span class="card__icon">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <rect width="28" height="28" fill="url(#pattern0_89_293)" />
@@ -112,14 +114,14 @@
                                 </defs>
                             </svg>
                         </span>
-                        <p>Имя Котика</p>
+                        <p class="card__name">Имя Котика</p>
                     </div>
                 </div>
                 <!-- Карточка собакина -->
-                <div class="card-doge-male">
-                    <img src="assets/images/2cdce84c0fc71b9f685eaee93d7a00cd.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
+                <div class="card card--dog card--male">
+                    <img src="assets/images/2cdce84c0fc71b9f685eaee93d7a00cd.jpg" alt="Собачка" class="image">
+                    <div class="card__info">
+                        <span class="card__icon">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <rect width="28" height="28" fill="url(#pattern0_89_541)" />
@@ -133,14 +135,14 @@
                                 </defs>
                             </svg>
                         </span>
-                        <p>Имя Собачки</p>
+                        <p class="card__name">Имя Собачки</p>
                     </div>
                 </div>
                 <!-- Карточка собачки -->
-                <div class="card-doge-female">
-                    <img src="assets/images/458ccbd4c29d401410063465159da28f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
+                <div class="card card--dog card--female">
+                    <img src="assets/images/458ccbd4c29d401410063465159da28f.jpg" alt="Собачка" class="image">
+                    <div class="card__info">
+                        <span class="card__icon">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <rect width="28" height="28" fill="url(#pattern0_89_544)" />
@@ -154,241 +156,46 @@
                                 </defs>
                             </svg>
                         </span>
-                        <p>Имя Собачки</p>
+                        <p class="card__name">Имя Собачки</p>
                     </div>
                 </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAJA0lEQVR4nO1da4xlRRE+oIuCD0RWyUZBRBQfGAOoUQQhPn5ooj9cMUBEDUQW1hjRIIKaDItiMO5Ex9k5p+rcWQcWURwQX7xEXR+IxFd8oDKgsKshqzuLi8suMjIyn6nu3nUe91H3dN07M/f2l3QyuXNPf9VVfc7prq6qm2UJCQkJCQkJCQkJCQkJCQkJCQnzgIGBJ4L5ahBNgnkazI+BeSeI7gHzjWAeBPMaML8cAwP7WygQRXEkiuKtYL4IzFeBeTOIfgXm+4IcU675v+8L/9sM5itB9FEwvwWjo88zkQXYD0XxUhTFOSD6HJi/Cea7nQ68DP8F8w4QfVl0ZcH5f/Lx8SeA+RowQ9WI/hm+fxo2bXqKmqcsnw/m80H0LTDvUvO1bruCwta0YxAwHwSid4Bok1Ounu8a0VllhS+wPNHGqMETEfL8uLr9F8ULwXwFmCcMFd6q/RFEnwHzCxrI9AoQjYD5X5U5RGfAfvEG8IJYDfwWEL0WzCtQFO8E0fdANNNFxc9vj4P5NjCvDjK9OjxObfonGo43QGcGXn1mcYca0UOd6HepGqBvWpYMwMkAiz0Lke6AxVcE0iNo8ZWBnn4HEJ0H5gLMvzdemdwe+l2LsnwDmI9Hnh8F5pUYGnqSa/K3/+z48J214ZrbjVc3d7k9je9/aRlgzjVl+dzgPthSYZC/BfOnwPwqi42M20hKX9In0e8qTIL7nVtjZOTwWL1UG0AEUXBhnA3mB1sM8mEwrxdXRLTArcbj75T1gbPZmHagLN/XyK+1LAwwq4+VYL62znV/B/PFGBt7RtZlCKfj9jLMl+srGB4+tOn1y8kA+/oqiveA+REQ7XH+n9HRp2WLjOBw+5jbnRM9CuYPKa9bfgZw/YlLt1Y7LFtiQK12GGq1l6i/3zUDEP1HSbYi6xPAr7w0OpmKJ/O+/dZkeX5I1ifA8PChSgM8GE/G/FcVmdHJ03JAODhqrROirfFk/phPY+2Tsj4BmE9RGuAXFmTjSrJ3Z30CML9XOSmvjScj+qzSAJ/O+gRgvlxpgCu6ae2bsj4BiG7t2lPBhZnoyP6R9QHggxQmVTopy5dZxQP9W3kXvDjrcUA2kroJuccuNIXoR0oDrM16HNC7or9vSXqpkvQbWY8DRDco74ABO1LmtysNsC3rcYB5m9IAb7MkvURJen3W4wDz15WT8eLuL7uK4pysx4GyfL9yMt5sQzgwsL/i9GivAY7MehzQ+oHkfMEiSjwEz2oIt2R9AmgdlLXa0RZkp3VqBQTv1LolxNhLrsHNIHp9tNAd5guh7hqdrI4XmmidkuzSNgdxUYhOnt+PfHZhtOAd5APzZZ3QSSOyK5VkZ6r79KHpM01eYDMms6dDfOLjUb6Ix+KF9yk/GgOcouzvoAaRCJjXtmFw8EAD+c35UBSnKg3wg1j5xdp/tnzhuFgbnUEhURTR8neAT70wIbonM5hB25UDWGm8kQGYrzOQ35wPGzc+q2ueAfUeYMOGpyr729qGQrYYyG/OJ2NV9rcrM5hB0yoypeu1Ddc2JIjLQH5zvuCi1/Q3nRnMoEeVBjjAXCFEe6Ll7wAfmA9W9vdQ994BtdozzR8JRPdHy98BPpfGquvvD91bBTXIua3T3/VtPBLGDeQ35wPRB5T9fcniDvi50tpvND7kB5jPMpDfnE/cLt07lJfaBzqyO1zitWSh+3wA8bXMLOhvcPBA5aHGAxgbe3K0/JF8IZp7K4juDLr4hCrP2deOUC3Nmw/AE6Jqq9unr78w00T4GflOtPAGfJXHTnSnjfBFcYa1AYJSPtLEOfZhE+EN+CIMUEalWEmICZi5zXW02gCOoyxPloAuF4Hto7Bv6mSMaRW+mLG7AiREH8TQ0NP1QhK9MghpUkTDQnGzIQoTLyOY/+L2KH6fIn+PoShelxnDQgfBm/B55PmzGxONjBweCjKZVi8xVMQKWdYpBrvRMlnEUhdg3h0yQA+eH2p3XsjbsiSzNQC5+j5a3svNeDugE+ceL8t3daIeUF0DhHJfZ8Rk0aCdilVEk5V58vwQJ2t4gXZSNyD6giSnHd1mOa52mwT3/iwQXtAVAzBvr8xDdEGQ9Q51YHK1tmPfGQqYT4xd7TRpj836e6Lq0gz6mPzKuQohq36igeyWTXR94sJz0/rrZOv2pkrKGXAu4FFF/7WqVQtFti6M/3HRdSMBLuy4AEQ3VFHOXriac36lc2+YSdLudZ+V5WuybgTexrXmERgNX8o+X/g6MA9FCjAtxTyyJQb4AiO6w6f6bUJWNmD+bsOlPNFIa0GkwAbRd2ZdKCn86/Zmt4fn5G2RRrgsW2KAPtannmIn5aB+3qF9bU6Su+hUm7AhxVYlxRLMG+otHVEUz1EncNdv4p1clS0BIM+PCVV/d0eMp25MEZiPcEVfRZdtFLD1FzexVogK+HXUXSDuWqJbXZBTu8JFQnwzwcm42WTnL3dAWZ7ckM8qVcl15osf/S1a6LltdyiYKnkIJ1mcAyx4rNZqJ4Do42D+ceSzvpER5HFztqXcCwfiC1frDunj2hSYfwmir7myNkTnoije7JQoBZfkESg7VlHs+PgBrnaDfJ7nxwWP52oQfRJEXwXRb7ok89623nTGO8XLIH2ttG4NAsu83aiNk9IFIWkzZFLDPh3Ii7dF1a32fCOpoYIObE72wHy6OkTRW/8nkcs6LLnZ3M57xOvqdBPl7zNCWb5IURN02tVf85u1Ve5I00cHYJm2CZchJOORF7ycvLW+5m7k+bGmyp+zQZNTs/rE28VPs+CaPD82HCFOLQGFQjmDpUbSmfOdem7lxfztJtde3ZU9TfitmKk5xU1nbcUbXLPKuTTku4utYK7bHnE/PVIUpzYdh7+7L5l3Z4su1pgruqkgfmMjynygrd9l8Ueg8isaX2wj7LFTM/3hEOV2VrvLxvDjQrudDmq1E7LFgLsl8/yY6LxbonPdY8qXFp7uoMInQ8THupAxGXV4707Meq1YISSUUO4uefn5gqocflXppyD6U4jW3jlnleVn8s6QC3YXmH8YKvWKk+38cNByxGKPLSEhISEhISEhISEhISEhISEh62v8D0gaozL8fqdNAAAAAElFTkSuQmCC" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAJA0lEQVR4nO1da4xlRRE+oIuCD0RWyUZBRBQfGAOoUQQhPn5ooj9cMUBEDUQW1hjRIIKaDItiMO5Ex9k5p+rcWQcWURwQX7xEXR+IxFd8oDKgsKshqzuLi8suMjIyn6nu3nUe91H3dN07M/f2l3QyuXNPf9VVfc7prq6qm2UJCQkJCQkJCQkJCQkJCQkJCQnzgIGBJ4L5ahBNgnkazI+BeSeI7gHzjWAeBPMaML8cAwP7WygQRXEkiuKtYL4IzFeBeTOIfgXm+4IcU675v+8L/9sM5itB9FEwvwWjo88zkQXYD0XxUhTFOSD6HJi/Cea7nQ68DP8F8w4QfVl0ZcH5f/Lx8SeA+RowQ9WI/hm+fxo2bXqKmqcsnw/m80H0LTDvUvO1bruCwta0YxAwHwSid4Bok1Ounu8a0VllhS+wPNHGqMETEfL8uLr9F8ULwXwFmCcMFd6q/RFEnwHzCxrI9AoQjYD5X5U5RGfAfvEG8IJYDfwWEL0WzCtQFO8E0fdANNNFxc9vj4P5NjCvDjK9OjxObfonGo43QGcGXn1mcYca0UOd6HepGqBvWpYMwMkAiz0Lke6AxVcE0iNo8ZWBnn4HEJ0H5gLMvzdemdwe+l2LsnwDmI9Hnh8F5pUYGnqSa/K3/+z48J214ZrbjVc3d7k9je9/aRlgzjVl+dzgPthSYZC/BfOnwPwqi42M20hKX9In0e8qTIL7nVtjZOTwWL1UG0AEUXBhnA3mB1sM8mEwrxdXRLTArcbj75T1gbPZmHagLN/XyK+1LAwwq4+VYL62znV/B/PFGBt7RtZlCKfj9jLMl+srGB4+tOn1y8kA+/oqiveA+REQ7XH+n9HRp2WLjOBw+5jbnRM9CuYPKa9bfgZw/YlLt1Y7LFtiQK12GGq1l6i/3zUDEP1HSbYi6xPAr7w0OpmKJ/O+/dZkeX5I1ifA8PChSgM8GE/G/FcVmdHJ03JAODhqrROirfFk/phPY+2Tsj4BmE9RGuAXFmTjSrJ3Z30CML9XOSmvjScj+qzSAJ/O+gRgvlxpgCu6ae2bsj4BiG7t2lPBhZnoyP6R9QHggxQmVTopy5dZxQP9W3kXvDjrcUA2kroJuccuNIXoR0oDrM16HNC7or9vSXqpkvQbWY8DRDco74ABO1LmtysNsC3rcYB5m9IAb7MkvURJen3W4wDz15WT8eLuL7uK4pysx4GyfL9yMt5sQzgwsL/i9GivAY7MehzQ+oHkfMEiSjwEz2oIt2R9AmgdlLXa0RZkp3VqBQTv1LolxNhLrsHNIHp9tNAd5guh7hqdrI4XmmidkuzSNgdxUYhOnt+PfHZhtOAd5APzZZ3QSSOyK5VkZ6r79KHpM01eYDMms6dDfOLjUb6Ix+KF9yk/GgOcouzvoAaRCJjXtmFw8EAD+c35UBSnKg3wg1j5xdp/tnzhuFgbnUEhURTR8neAT70wIbonM5hB25UDWGm8kQGYrzOQ35wPGzc+q2ueAfUeYMOGpyr729qGQrYYyG/OJ2NV9rcrM5hB0yoypeu1Ddc2JIjLQH5zvuCi1/Q3nRnMoEeVBjjAXCFEe6Ll7wAfmA9W9vdQ994BtdozzR8JRPdHy98BPpfGquvvD91bBTXIua3T3/VtPBLGDeQ35wPRB5T9fcniDvi50tpvND7kB5jPMpDfnE/cLt07lJfaBzqyO1zitWSh+3wA8bXMLOhvcPBA5aHGAxgbe3K0/JF8IZp7K4juDLr4hCrP2deOUC3Nmw/AE6Jqq9unr78w00T4GflOtPAGfJXHTnSnjfBFcYa1AYJSPtLEOfZhE+EN+CIMUEalWEmICZi5zXW02gCOoyxPloAuF4Hto7Bv6mSMaRW+mLG7AiREH8TQ0NP1QhK9MghpUkTDQnGzIQoTLyOY/+L2KH6fIn+PoShelxnDQgfBm/B55PmzGxONjBweCjKZVi8xVMQKWdYpBrvRMlnEUhdg3h0yQA+eH2p3XsjbsiSzNQC5+j5a3svNeDugE+ceL8t3daIeUF0DhHJfZ8Rk0aCdilVEk5V58vwQJ2t4gXZSNyD6giSnHd1mOa52mwT3/iwQXtAVAzBvr8xDdEGQ9Q51YHK1tmPfGQqYT4xd7TRpj836e6Lq0gz6mPzKuQohq36igeyWTXR94sJz0/rrZOv2pkrKGXAu4FFF/7WqVQtFti6M/3HRdSMBLuy4AEQ3VFHOXriac36lc2+YSdLudZ+V5WuybgTexrXmERgNX8o+X/g6MA9FCjAtxTyyJQb4AiO6w6f6bUJWNmD+bsOlPNFIa0GkwAbRd2ZdKCn86/Zmt4fn5G2RRrgsW2KAPtannmIn5aB+3qF9bU6Su+hUm7AhxVYlxRLMG+otHVEUz1EncNdv4p1clS0BIM+PCVV/d0eMp25MEZiPcEVfRZdtFLD1FzexVogK+HXUXSDuWqJbXZBTu8JFQnwzwcm42WTnL3dAWZ7ckM8qVcl15osf/S1a6LltdyiYKnkIJ1mcAyx4rNZqJ4Do42D+ceSzvpER5HFztqXcCwfiC1frDunj2hSYfwmir7myNkTnoije7JQoBZfkESg7VlHs+PgBrnaDfJ7nxwWP52oQfRJEXwXRb7ok89623nTGO8XLIH2ttG4NAsu83aiNk9IFIWkzZFLDPh3Ii7dF1a32fCOpoYIObE72wHy6OkTRW/8nkcs6LLnZ3M57xOvqdBPl7zNCWb5IURN02tVf85u1Ve5I00cHYJm2CZchJOORF7ycvLW+5m7k+bGmyp+zQZNTs/rE28VPs+CaPD82HCFOLQGFQjmDpUbSmfOdem7lxfztJtde3ZU9TfitmKk5xU1nbcUbXLPKuTTku4utYK7bHnE/PVIUpzYdh7+7L5l3Z4su1pgruqkgfmMjynygrd9l8Ueg8isaX2wj7LFTM/3hEOV2VrvLxvDjQrudDmq1E7LFgLsl8/yY6LxbonPdY8qXFp7uoMInQ8THupAxGXV4707Meq1YISSUUO4uefn5gqocflXppyD6U4jW3jlnleVn8s6QC3YXmH8YKvWKk+38cNByxGKPLSEhISEhISEhISEhISEhISEh62v8D0gaozL8fqdNAAAAAElFTkSuQmCC" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                <div class="card-cat-female">
-                    <img src="assets/images/238c3eb7a06fdb0d7663d941c1fcca7f.jpg" alt="Котик" class="image">
-                    <div class="card-info">
-                        <span class="icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p>Имя Котика</p>
-                    </div>
-                </div>
-                
+                 
             </div>
         </section>
     </main>
+    <main class="admin">
+        <section class="admin__section">
+            <div class="container">
+                <h1>Админка</h1>
+                <div class="admin__content">
+                    <div class="admin__item">
+                        <a class="admin__btn">Добавить котика</a>
+                    </div>
+                    <div class="admin__item">
+                        <a class="admin__btn">Редактировать котика</a>
+                    </div>
+                    <div class="admin__item">
+                        <a class="admin__btn">Удалить котика</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="modal" id="registrationModal">
+        <div class="modal__content">
+            <span class="modal__close" id="closeModal">&times;</span>
+            <h2>Регистрация</h2>
+            <form class="modal__form">
+                <label for="login">Логин</label>
+                <input type="login" id="login" name="login" required>
+                
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit" class="modal__submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
     <script src="assets/js/app.js"></script>
 </body>
 </html>
