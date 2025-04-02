@@ -38,6 +38,7 @@
         </div>
     </header>
     {% block content %} {% endblock %}
-    <script src="assets/js/app.js"></script>
+    {% load static %}
+    <script src="{% static 'main/js/app.js' %}"></script>
 </body>
 </html>
