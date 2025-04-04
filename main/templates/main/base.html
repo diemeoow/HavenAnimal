@@ -14,18 +14,18 @@
 
     <title>{% block title %} {% endblock %}</title>
 </head>
-
+{% load custom_tags %}
 <body>
     <header>
         <div class="container">
             <nav>
                 <div class="nav-left">
-                    <button class="nav-btn">Главная</button>
-                    <button class="nav-btn">Кошечки</button>
+                    <button onclick="window.location.href='{% url 'home' %}'" class="nav-btn">Главная</button>
+                    {% cats_species_url %}
                 </div>
                 <h1>Лапки & Хвостики</h1>
                 <div class="nav-right">
-                    <button class="nav-btn">Собачки</button>
+                    {% dogs_species_url %}
                     <button class="profile-btn">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path id="Icon"

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class SpeciesModel(models.Model):
@@ -12,6 +13,9 @@ class SpeciesModel(models.Model):
         verbose_name = 'Вид'
         verbose_name_plural = 'Виды'
         ordering = ['name']
+
+    def get_absolute_url(self):
+        return reverse('species_page', kwargs={'species_slug': self.slug})
 
 
 class BreedModel(models.Model):
