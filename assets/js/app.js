@@ -1,12 +1,31 @@
-document.querySelector('.filters__btn--gender').addEventListener('click', function() {
-    this.closest('.filters').classList.toggle('active');
-  });
-  
-  // Закрытие при клике вне фильтра
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.filters')) {
-      document.querySelector('.filters').classList.remove('active');
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filters__button');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filterGroup = button.parentElement; // Находим родительский filters__group
+            const isActive = filterGroup.classList.contains('filters__group--active');
+
+            // Закрываем все фильтры
+            document.querySelectorAll('.filters__group').forEach(group => {
+                group.classList.remove('filters__group--active');
+            });
+
+            // Если текущий фильтр не был активен, открываем его
+            if (!isActive) {
+                filterGroup.classList.add('filters__group--active');
+            }
+        });
+    });
+
+    // Закрываем фильтры при клике вне их
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.filters__group')) {
+            document.querySelectorAll('.filters__group').forEach(group => {
+                group.classList.remove('filters__group--active');
+            });
+        }
+    });
 });
 document.addEventListener('DOMContentLoaded', () => {
   const profileButton = document.querySelector('.nav__btn--profile');
