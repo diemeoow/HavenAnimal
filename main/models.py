@@ -33,8 +33,8 @@ class BreedModel(models.Model):
 
 class AnimalCardModel(models.Model):
     class GenderAnimal(models.TextChoices):
-        MALE = 'М'
-        FEMALE = 'Ж'
+        MALE = 'male'
+        FEMALE = 'female'
 
     name = models.CharField(max_length=100, blank=False, null=True, verbose_name="Имя животного")
     age = models.FloatField(null=True, blank=True, verbose_name="Возраст")
@@ -42,7 +42,7 @@ class AnimalCardModel(models.Model):
     species = models.ForeignKey(SpeciesModel, on_delete=models.SET_NULL, null=True, related_name="species", verbose_name="Вид")
     breed = models.ForeignKey(BreedModel, on_delete=models.SET_NULL, null=True, related_name="breed", verbose_name="Порода")
     animal_reservation = models.BooleanField(default=False, verbose_name="Бронь")
-    gender = models.CharField(max_length=2, choices=GenderAnimal.choices, blank=False, null=True, verbose_name="Гендер")
+    gender = models.CharField(max_length=6, choices=GenderAnimal.choices, blank=False, null=True, verbose_name="Гендер")
     number_animal_cage = models.PositiveIntegerField(verbose_name="Номер вольера")
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
 

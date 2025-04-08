@@ -9,10 +9,17 @@ class MainPage(ListView):
     template_name = "main/main_page.html"
     context_object_name = 'cards'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
     def get_queryset(self):
         species_slug = self.kwargs.get('species_slug')
-        cards = AnimalCardModel.objects.all()
+        gender = self.kwargs.get('gender')
+        if gender:
+            cards = AnimalCardModel.objects.filter(gender=gender)
+        else:
+            cards = AnimalCardModel.objects.all()
         if species_slug:
             cards = cards.filter(species__slug__exact=species_slug)
         return cards
-

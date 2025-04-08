@@ -1,12 +1,31 @@
-document.querySelector('.filters__btn--gender').addEventListener('click', function() {
-    this.closest('.filters').classList.toggle('active');
-  });
+document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filters__button');
 
-  // Закрытие при клике вне фильтра
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.filters')) {
-      document.querySelector('.filters').classList.remove('active');
-    }
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filterGroup = button.parentElement; // Находим родительский filters__group
+            const isActive = filterGroup.classList.contains('filters__group--active');
+
+            // Закрываем все фильтры
+            document.querySelectorAll('.filters__group').forEach(group => {
+                group.classList.remove('filters__group--active');
+            });
+
+            // Если текущий фильтр не был активен, открываем его
+            if (!isActive) {
+                filterGroup.classList.add('filters__group--active');
+            }
+        });
+    });
+
+    // Закрываем фильтры при клике вне их
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.filters__group')) {
+            document.querySelectorAll('.filters__group').forEach(group => {
+                group.classList.remove('filters__group--active');
+            });
+        }
+    });
 });
 document.addEventListener('DOMContentLoaded', () => {
   const profileButton = document.querySelector('.nav__btn--profile');
@@ -63,4 +82,37 @@ document.addEventListener('DOMContentLoaded', () => {
           mainMain.style.display = 'block';
       }
   });
+});
+
+document.querySelectorAll('input[name="gender"]').forEach((radio) => {
+  radio.addEventListener('change', () => {
+    if (radio.checked) {
+      const gender = radio.value;
+
+      // Получаем текущий путь без слэша на конце
+      let currentPath = window.location.pathname.replace(/\/$/, '');
+
+      // Убираем /male или /female, если уже есть
+      currentPath = currentPath.replace(/\/(male|female)$/, '');
+
+      // Формируем новый путь
+      const newPath = `${currentPath}/${gender}`;
+
+      // Перенаправление
+      window.location.href = newPath;
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const path = window.location.pathname;
+  const genderMatch = path.match(/\/(male|female)/);
+
+  if (genderMatch) {
+    const gender = genderMatch[1]; // 'male' или 'female'
+    const radio = document.querySelector(`input[name="gender"][value="${gender}"]`);
+    if (radio) {
+      radio.checked = true;
+    }
+  }
 });
