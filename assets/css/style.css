@@ -5,7 +5,6 @@ body {
     line-height: 1.6;
     background-color: #FFEED2;
     font-family: 'Montserrat',serif;
-    font-size: 20px;
     font-weight: 600;
     color: #6B5E55;
 }
@@ -107,7 +106,7 @@ main {
 .filters__group--active .filters__arrow {
     transform: rotate(-90deg);
 }
-.filters button {
+button {
     font-family: 'Montserrat', serif;
     font-weight: 600;
     font-size: 18px;
@@ -125,10 +124,9 @@ main {
     gap: 8px;
     transition: background-color 0.1s ease;
     backdrop-filter: blur(5px);
-
 }
 
-.filters button:hover {
+button:hover {
     background-color: #cacaca59;
     backdrop-filter: blur(5px);
 }
@@ -143,11 +141,6 @@ main {
     padding: 3px;
     flex-direction: column;
 
-    border: 1px solid #ddd;
-    width: auto;
-    min-width: auto;
-    max-width: auto;
-    height: auto;
     border-radius: 8px;
     background: rgba(255, 243, 223, 0.7);
     border: 1px solid rgba(107, 94, 85, 0.89);
@@ -155,36 +148,47 @@ main {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 10;
 }
+.filters__options--breed{
+    min-width: 200px;
+}
 .filters__group--active .filters__options {
     display: flex;
 }
 .filters__option {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
     position: relative;
     padding: 8px 12px;
     gap: 2px;
     height: auto;
-
+    
     margin: 0px;
     cursor: pointer;
 }
-.filters__option label {
+.filters__option .text-container {
     display: flex;
-    flex-direction: row; /* Радиокнопка и основной текст остаются в строке */
-    align-items: center;
-    gap: 8px;
-    width: 100%;
+    flex-direction: column; /* Основной текст и <p> в строке */
+    margin: 0 8px ;
+    flex-wrap: nowrap; /* Запрещаем перенос текста на новую строку */
+    font-size: 18px;
 }
+.filters__label-text {
+    font-size: 18px; /* Размер шрифта для основного текста */
+}
+
 .filters__option p {
     font-weight: 500;
     margin: 0;
     font-size: 14px;
-    color: #6B5E55;
     line-height: 1.2;
 }
-
+.filters__option input  {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
 
 .filters__option input:checked + .filters__radio::after {
     content: '';
@@ -198,10 +202,29 @@ main {
     transform: translate(-50%, -50%);
 }
 
-.filters__option input {
+.filters__checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #6B5E55;
+    border-radius: 4px; /* Чекбоксы квадратные с небольшим скруглением */
+    cursor: pointer;
+}
+.filters__option input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
+}
+.filters__option input[type="checkbox"]:checked + .filters__checkbox::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: #6B5E55; /* Цвет фона при выборе */
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
 }
 
 .filters__radio {
@@ -266,6 +289,7 @@ main {
 main.admin {
     display: none; /* Скрываем секцию admin по умолчанию */
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -273,7 +297,8 @@ main.admin {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(1px);
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -284,12 +309,13 @@ main.admin {
     text-align: center;
 }
 .modal__content {
-    background: #FFF6E9;
+    background: rgba(255, 246, 233, 0.8);
+    backdrop-filter: blur(40px);
     padding: 20px;
     border-radius: 16px;
     height:450px;
-    width: 90%;
-    max-width: 400px;
+    width: 400px;
+    max-width: 90%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
@@ -334,5 +360,117 @@ main.admin {
 }
 
 .modal__submit:hover {
+    background-color: #5a4d48;
+}
+/* Окно подробностей */
+#context_window .modal__content--context {
+    background: rgba(255, 246, 233, 0.8);
+    backdrop-filter: blur(40px);
+    border: 1px solid #D9D9D9;
+    box-shadow: 0px 0px 50px 4px rgba(107, 94, 85, 0.89);
+    border-radius: 16px;
+    width: 650px;
+    height: 600px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#context_window .modal__header--context {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#context_window .modal__header--context img:first-child {
+    position: relative;
+    width: 28px;
+    height: 28px;
+
+}
+
+#context_window .modal__header--context .name__pets {
+    font-family: 'Montserrat', serif;
+    font-size: 28px;
+    color: #6B5E55;
+    margin: 0;
+    text-align: left;
+
+}
+
+#context_window .modal__header--context .modal__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#context_window .modal__header--context .modal__close:hover {
+    opacity: 1;
+}
+
+#context_window .modal__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 85%;
+}
+
+#context_window .modal__form .image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border: none;
+    border-radius: 16px;
+
+width: 520px;
+min-width: 160px;
+height: 373px;
+
+
+border: 2px solid #6B5E55;
+border-radius: 10px;
+
+}
+
+#context_window .modal__form p {
+    font-family: 'Montserrat', serif;
+    font-size: 20px;
+    font-weight: 460;
+    color: #6B5E55;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    line-height: 1.4; /* Увеличиваем межстрочный интервал для соответствия фото */
+    
+}
+
+#context_window .modal__form button {
+    background-color: #6B5E55;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', serif;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase; /* Текст кнопки в верхнем регистре */
+}
+
+#context_window .modal__form button:hover {
     background-color: #5a4d48;
 }
