@@ -279,7 +279,7 @@ button:hover {
     width: 28px;
     height: 28px;
     padding: 0px;
-    align-items: center;
+
 }
 .card__name {
     font-size: 24px;
@@ -335,6 +335,9 @@ main.admin {
     height: 32px;
     cursor: pointer;
 }
+#registrationModal .modal__form{
+    height: 100%;
+}
 
 .modal__form label {
     display: block;
@@ -357,6 +360,7 @@ main.admin {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: auto;
 }
 
 .modal__submit:hover {
@@ -369,12 +373,14 @@ main.admin {
     border: 1px solid #D9D9D9;
     box-shadow: 0px 0px 50px 4px rgba(107, 94, 85, 0.89);
     border-radius: 16px;
-    width: 650px;
-    height: 600px;
-    padding: 20px;
+    width: 600px;
+    height: 650px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+#context_window .container{
+    padding: 25px 40px;
 }
 
 #context_window .modal__header--context {
@@ -382,17 +388,15 @@ main.admin {
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 100%;
     gap: 10px;
-    margin-bottom: 10px;
 }
 
 #context_window .modal__header--context img:first-child {
     position: relative;
     width: 28px;
     height: 28px;
-
 }
 
 #context_window .modal__header--context .name__pets {
@@ -401,15 +405,10 @@ main.admin {
     color: #6B5E55;
     margin: 0;
     text-align: left;
-
 }
 
 #context_window .modal__header--context .modal__close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 24px;
-    height: 24px;
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.3s ease;
@@ -425,24 +424,15 @@ main.admin {
     align-items: center;
     gap: 20px;
     width: 100%;
-    max-width: 85%;
+    height: 100%;
 }
 
 #context_window .modal__form .image {
     width: 100%;
-    height: 350px;
+    height: 373px;
     object-fit: cover;
-    border: none;
-    border-radius: 16px;
-
-width: 520px;
-min-width: 160px;
-height: 373px;
-
-
-border: 2px solid #6B5E55;
-border-radius: 10px;
-
+    border-radius: 12px;
+    border: 2px solid #6B5E55;
 }
 
 #context_window .modal__form p {
@@ -454,21 +444,23 @@ border-radius: 10px;
     text-align: left;
     width: 100%;
     line-height: 1.4; /* Увеличиваем межстрочный интервал для соответствия фото */
-    
 }
 
 #context_window .modal__form button {
-    background-color: #6B5E55;
+    background: #946262;
     color: #fff;
     padding: 10px 20px;
-    border: none;
     border-radius: 8px;
     font-family: 'Montserrat', serif;
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-transform: uppercase; /* Текст кнопки в верхнем регистре */
+    width: 183px;
+    height: 44px;
+    justify-content: center;
+    border: 2px solid #695444;
+    margin-top: auto;
 }
 
 #context_window .modal__form button:hover {

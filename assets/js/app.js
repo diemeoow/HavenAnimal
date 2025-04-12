@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Существующий код для фильтров
+    // фильтры
     const filterButtons = document.querySelectorAll('.filters__button');
 
     filterButtons.forEach(button => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Существующий код для модального окна регистрации и навигации
+    // регистрация/навигация
     const profileButton = document.querySelector('.nav__btn--profile');
     const mainButton = document.querySelector('.nav__btn');
     const modal = document.getElementById('registrationModal');
@@ -72,20 +72,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Новый код для открытия окна подробностей
+    // карточки
     const cards = document.querySelectorAll('.card');
     const contextWindow = document.getElementById('context_window');
-    const contextCloseButton = contextWindow.querySelector('.modal__close'); // Предполагаем, что добавим кнопку закрытия
+    const contextCloseButton = contextWindow.querySelector('.modal__close'); 
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            // Получаем данные из карточки
+
             const name = card.querySelector('.card__name').textContent;
             const imageSrc = card.querySelector('.image').src;
             const isFemale = card.classList.contains('card--female');
             const isCat = card.classList.contains('card--cat');
 
-            // Обновляем содержимое окна подробностей
+
             const contextName = contextWindow.querySelector('.name__pets');
             const contextImage = contextWindow.querySelector('.modal__form .image');
             const contextGenderIcon = contextWindow.querySelector('.modal__header img');
@@ -93,12 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             contextName.textContent = name;
             contextImage.src = imageSrc;
-            contextGenderIcon.src = isFemale 
-                ? 'assets/images/cat-female.png' 
-                : 'assets/images/cat-male.png'; // Предполагаем, что у вас есть иконки для пола
-            contextDescription.textContent = `Описание для ${name}`; // Здесь можно добавить реальное описание
-
-            // Показываем окно
+            contextGenderIcon.src = isCat
+                ? contextGenderIcon.src = isFemale 
+                    ? 'assets/images/cat-female.svg' 
+                    : 'assets/images/cat-male.svg'
+                : contextGenderIcon.src = isFemale
+                    ? 'assets/images/dog-female.svg' 
+                    : 'assets/images/dog-male.svg';
+            contextDescription.textContent = `Описание для ${name}`; 
             contextWindow.style.display = 'flex';
         });
     });
