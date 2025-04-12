@@ -9,55 +9,47 @@
  <main class="main">
         <div class="filters">
             <div class="container">
+                <!-- Фильтр гендера -->
                 <div class="filters__group">
-                    <button class="filters__button filters__button--gender">Пол
-                        <svg class="filters__arrow" width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <button class="filters__button filters__button--gender" type="button">Пол
+                        <svg class="filters__arrow" width="10" height="15" viewBox="0 0 10 15" fill="none">
                             <path d="M8 14L2 8L8 2" stroke="#6B5E55" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                     <div class="filters__options filters__options--gender">
                         <label class="filters__option">
-                            <input type="radio" name="gender" value="male">
+                            <input type="radio" name="gender" value="male" class="gender-radio"
+                                {% if request.GET.gender == 'male' %}checked{% endif %}>
                             <span class="filters__radio"></span>
                             Мальчик
                         </label>
                         <label class="filters__option">
-                            <input type="radio" name="gender" value="female">
+                            <input type="radio" name="gender" value="female" class="gender-radio"
+                                {% if request.GET.gender == 'female' %}checked{% endif %}>
                             <span class="filters__radio"></span>
                             Девочка
                         </label>
                     </div>
                 </div>
+                <!-- Фильтр породы -->
                 <div class="filters__group">
-                    <button class="filters__button filters__button--breed">Порода
-                        <svg class="filters__arrow" width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <button class="filters__button filters__button--breed" type="button">Порода
+                        <svg class="filters__arrow" width="10" height="15" viewBox="0 0 10 15" fill="none">
                             <path d="M8 14L2 8L8 2" stroke="#6B5E55" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                     <div class="filters__options filters__options--breed">
+                        {% for breed in breeds %}
                         <label class="filters__option">
-                            <input type="radio" name="breed" value="all">
+                            <input type="radio" name="breed" value="{{ breed.slug }}" class="breed-radio"
+                                {% if request.GET.breed == breed.slug %}checked{% endif %}>
                             <span class="filters__radio"></span>
-                            Все породы
+                            {{ breed.name }}
                         </label>
-                        <label class="filters__option">
-                            <input type="radio" name="breed" value="persian">
-                            <span class="filters__radio"></span>
-                            Персидская
-                        </label>
-                        <label class="filters__option">
-                            <input type="radio" name="breed" value="maine-coon">
-                            <span class="filters__radio"></span>
-                            Мейн-кун
-                        </label>
-                        <label class="filters__option">
-                            <input type="radio" name="breed" value="siamese">
-                            <span class="filters__radio"></span>
-                            Сиамская
-                        </label>
+                        {% endfor %}
                     </div>
                 </div>
-
+                <!-- Фильтры возраст -->
                 <div class="filters__group">
                     <button class="filters__button filters__button--age">Возраст
                         <svg class="filters__arrow" width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,28 +58,37 @@
                     </button>
                     <div class="filters__options filters__options--age">
                         <label class="filters__option">
-                            <input type="radio" name="age" value="kitten">
+                            <input type="radio" name="age" value="1" class="age-radio"
+                                   {% if request.GET.age == '1' %}checked{% endif %}>
                             <span class="filters__radio"></span>
-                            <span class="filters__label-text">Котенок</span>
-                            <p>До года</p>
+                            <span class="text-container">
+                                <span class="filters__label-text">Ребенок<p>До года</p></span>
+                            </span>
                         </label>
                         <label class="filters__option">
-                            <input type="radio" name="age" value="young">
+                            <input type="radio" name="age" value="1-3" class="age-radio"
+                                   {% if request.GET.age == '1-3' %}checked{% endif %}>
                             <span class="filters__radio"></span>
-                            <span class="filters__label-text">Молодой</span>
-                            <p>1-3 года</p>
+                            <span class="text-container">
+                                <span class="filters__label-text">Молодой<p>1-3 года</p></span>
+
+                            </span>
                         </label>
                         <label class="filters__option">
-                            <input type="radio" name="age" value="adult">
+                            <input type="radio" name="age" value="3-7" class="age-radio"
+                                   {% if request.GET.age == '3-7' %}checked{% endif %}>
                             <span class="filters__radio"></span>
-                            <span class="filters__label-text">Взрослый</span>
-                            <p>3-7 лет</p>
+                            <span class="text-container">
+                                <span class="filters__label-text">Взрослый<p>3-7 лет</p></span>
+                            </span>
                         </label>
                         <label class="filters__option">
-                            <input type="radio" name="age" value="elderly">
+                            <input type="radio" name="age" value="7+" class="age-radio"
+                                   {% if request.GET.age == '7+' %}checked{% endif %}>
                             <span class="filters__radio"></span>
-                            <span class="filters__label-text">Пожилой</span>
-                            <p>7+ лет</p>
+                            <span class="text-container">
+                                <span class="filters__label-text">Пожилой<p>7+ лет</p></span>
+                            </span>
                         </label>
                     </div>
                 </div>
@@ -99,7 +100,7 @@
                 {% if card.species.name == 'Кот' %}
                     {% if card.gender == 'female' %}
                         <!-- Карточка кошечки -->
-                        <div class="card card--cat card--female">
+                        <div class="card card--cat card--female" data-description="{{ card.description }}"> <!-- Передача описание в модальное окно -->
                             <img src="{{ card.photos.first.photo.url }}" alt="Котик" class="image">
                             <div class="card__info">
                                 <span class="card__icon">
@@ -120,7 +121,7 @@
                         </div>
                     {% else %}
                         <!-- Карточка кота -->
-                        <div class="card card--cat card--male">
+                        <div class="card card--cat card--male" data-description="{{ card.description }}">
                             <img src="{{ card.photos.first.photo.url }}" alt="Котик" class="image">
                             <div class="card__info">
                                 <span class="card__icon">
@@ -142,9 +143,9 @@
                         </div>
                     {% endif %}
                 {% else %}
-                    {% if card.gender == 'female' %}
+                    {% if card.gender != 'female' %}
                         <!-- Карточка собакина -->
-                       <div class="card card--dog card--male">
+                       <div class="card card--dog card--male" data-description="{{ card.description }}">
                             <img src="{{ card.photos.first.photo.url }}" alt="Собачка" class="image">
                             <div class="card__info">
                                 <span class="card__icon">
@@ -166,7 +167,7 @@
                         </div>
                     {% else %}
                         <!-- Карточка собачки -->
-                         <div class="card card--dog card--female">
+                         <div class="card card--dog card--female" data-description="{{ card.description }}">
                             <img src="{{ card.photos.first.photo.url }}" alt="Собачка" class="image">
                             <div class="card__info">
                                 <span class="card__icon">
@@ -192,7 +193,7 @@
             </div>
         </section>
     </main>
-     <main class="admin">
+     <main class="admin"><!--Страница Админа -->
         <section class="admin__section">
             <div class="container">
                 <h1>Админка</h1>
@@ -210,11 +211,11 @@
             </div>
         </section>
     </main>
-    <div class="modal" id="registrationModal">
+    <div class="modal" id="registrationModal"><!--Окно регистрации -->
         <div class="modal__content">
             <div class="modal__header">
                 <h2>Авторизация</h2>
-                <img class="modal__close" src="assets/images/Icon Button.png" id="closeModal">
+                <img class="modal__close" src="assets/images/btn_exit.png" id="closeModal">
             </div>
             <form class="modal__form">
                 <label for="email">E-mail:</label>
@@ -226,6 +227,22 @@
                 <button type="submit" class="modal__submit">Зарегистрироваться</button>
             </form>
         </div>
+    </div>
+     <div class="modal" id="context_window"> <!--Окно подробностей -->
+        <div class="modal__content modal__content--context">
+            <div class="modal__header modal__header--context">
+                <img src="assets/images/cat-female.png" class="image_gender">
+                <h2 class="name__pets">Имя котика</h2>
+                {% load static %}
+                <img class="modal__close" src="{% static 'main/images/btn_exit.png' %}" alt="Close">
+            </div>
+            <div class="modal__form">
+                <img src="assets/images/b7893704bb147089630595b7c63bc433.jpg" class="image">
+                <p>Описание котика</p>
+                <button>Забронировать</button>
+            </div>
+        </div>
+
     </div>
 {% endblock %}
 

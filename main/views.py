@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from .models import AnimalCardModel, SpeciesModel
+from .models import AnimalCardModel, SpeciesModel, BreedModel
 
 
 class MainPage(ListView):
@@ -11,15 +11,31 @@ class MainPage(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['breeds'] = BreedModel.objects.all()
         return context
 
     def get_queryset(self):
-        species_slug = self.kwargs.get('species_slug')
-        gender = self.kwargs.get('gender')
+        cards = AnimalCardModel.objects.all()
+
+        species_slug = self.request.GET.get('species')
+        gender = self.request.GET.get('gender')
+        breed_slug = self.request.GET.get('breed')
+        age = self.request.GET.get('age')
+
         if gender:
-            cards = AnimalCardModel.objects.filter(gender=gender)
-        else:
-            cards = AnimalCardModel.objects.all()
+            cards = cards.filter(gender=gender)
+        if breed_slug:
+            cards = cards.filter(breed__slug=breed_slug)
         if species_slug:
-            cards = cards.filter(species__slug__exact=species_slug)
+            cards = cards.filter(species__slug=species_slug)
+        if age: # улучшить
+            if age == '1':
+                cards = cards.filter(age__lte=1)
+            elif age == '1-3':
+                cards = cards.filter(age__gt=1).filter(age__lte=3)
+            elif age == '3-7':
+                cards = cards.filter(age__gt=3).filter(age__lte=7)
+            else:
+                cards = cards.filter(age__gt=7)
+
         return cards

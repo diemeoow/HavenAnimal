@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.http import urlencode
 
 
 class SpeciesModel(models.Model):
@@ -15,7 +16,9 @@ class SpeciesModel(models.Model):
         ordering = ['name']
 
     def get_absolute_url(self):
-        return reverse('species_page', kwargs={'species_slug': self.slug})
+        base_url = reverse('home')  # маршрут на главную
+        query_string = urlencode({'species': self.slug})
+        return f'{base_url}?{query_string}'
 
 
 class BreedModel(models.Model):
@@ -29,6 +32,9 @@ class BreedModel(models.Model):
         verbose_name = 'Порода'
         verbose_name_plural = 'Породы'
         ordering = ['name']
+
+    def get_absolute_url(self):
+        return reverse('breed_slug', kwargs={'breed_slug': self.slug})
 
 
 class AnimalCardModel(models.Model):
