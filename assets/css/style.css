@@ -184,6 +184,7 @@ button:hover {
     font-size: 14px;
     line-height: 1.2;
 }
+
 .filters__option input  {
     position: absolute;
     opacity: 0;
@@ -202,12 +203,12 @@ button:hover {
     transform: translate(-50%, -50%);
 }
 
-.filters__checkbox {
+/* .filters__checkbox {
     position: relative;
     width: 20px;
     height: 20px;
     border: 2px solid #6B5E55;
-    border-radius: 4px; /* Чекбоксы квадратные с небольшим скруглением */
+    border-radius: 4px; 
     cursor: pointer;
 }
 .filters__option input[type="checkbox"] {
@@ -222,10 +223,10 @@ button:hover {
     left: 50%;
     width: 12px;
     height: 12px;
-    background-color: #6B5E55; /* Цвет фона при выборе */
+    background-color: #6B5E55; 
     border-radius: 2px;
     transform: translate(-50%, -50%);
-}
+} */
 
 .filters__radio {
     position: relative;
@@ -272,14 +273,16 @@ button:hover {
 .card__info {
     display: flex;
     align-items: center;
-    padding: 10px;
+    /* margin-top: auto;*/
     gap: 8px; 
 }
 .card__icon{
     width: 28px;
     height: 28px;
     padding: 0px;
-
+}
+.owner--button{
+    margin-top: auto;
 }
 .card__name {
     font-size: 24px;
@@ -390,13 +393,13 @@ main.admin {
     position: relative;
     margin-bottom: 10px;
     width: 100%;
-    gap: 10px;
+    gap: 4px;
 }
 
 #context_window .modal__header--context img:first-child {
     position: relative;
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
 }
 
 #context_window .modal__header--context .name__pets {
@@ -426,6 +429,32 @@ main.admin {
     width: 100%;
     height: 100%;
 }
+#context_window .btn__group{
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    justify-content: space-between;
+    align-self: stretch;
+    align-items: center;
+    margin-top: auto;
+}
+#context_window .btn__owner{
+    display: flex;
+    align-items: center;
+    
+}
+#context_window .btn__owner--edit, .btn__owner--delete{
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    /* border: 2px solid #767676; */
+}
+#context_window .btn__owner--edit{
+    background: rgba(107, 94, 85, 0.89);
+}
+#context_window .btn__owner--delete{
+    background: #9F4848;
+}
 
 #context_window .modal__form .image {
     width: 100%;
@@ -446,23 +475,23 @@ main.admin {
     line-height: 1.4; /* Увеличиваем межстрочный интервал для соответствия фото */
 }
 
-#context_window .modal__form button {
-    background: #946262;
+#context_window .btn__group--reservation {
+    background: #695444;
     color: #fff;
     padding: 10px 20px;
+    margin: 0;
     border-radius: 8px;
     font-family: 'Montserrat', serif;
     font-weight: 500;
     font-size: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
     width: 183px;
     height: 44px;
     justify-content: center;
     border: 2px solid #695444;
-    margin-top: auto;
 }
 
-#context_window .modal__form button:hover {
+#context_window .modal__form .btn__group--reservation:hover {
     background-color: #5a4d48;
 }
