@@ -28,14 +28,10 @@ class MainPage(ListView):
             cards = cards.filter(breed__slug=breed_slug)
         if species_slug:
             cards = cards.filter(species__slug=species_slug)
-        if age: # улучшить
-            if age == '1':
-                cards = cards.filter(age__lte=1)
-            elif age == '1-3':
-                cards = cards.filter(age__gt=1).filter(age__lte=3)
-            elif age == '3-7':
-                cards = cards.filter(age__gt=3).filter(age__lte=7)
+        if age:
+            if age != '7+':
+                cards = cards.filter(age__gt=int(age[0])).filter(age__lte=int(age[-1]))
             else:
-                cards = cards.filter(age__gt=7)
+                cards = cards.filter(age__gte=7)
 
         return cards

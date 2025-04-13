@@ -58,8 +58,8 @@
                     </button>
                     <div class="filters__options filters__options--age">
                         <label class="filters__option">
-                            <input type="radio" name="age" value="1" class="age-radio"
-                                   {% if request.GET.age == '1' %}checked{% endif %}>
+                            <input type="radio" name="age" value="0-1" class="age-radio"
+                                   {% if request.GET.age == '0-1' %}checked{% endif %}>
                             <span class="filters__radio"></span>
                             <span class="text-container">
                                 <span class="filters__label-text">Ребенок<p>До года</p></span>
@@ -242,7 +242,6 @@
                 <button>Забронировать</button>
             </div>
         </div>
-
     </div>
 {% endblock %}
 
