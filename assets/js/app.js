@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // фильтры
+    // Фильтры
     const filterButtons = document.querySelectorAll('.filters__button');
 
     filterButtons.forEach(button => {
@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // регистрация/навигация
+    // Регистрация/навигация
     const profileButton = document.querySelector('.nav__btn--profile');
-    const mainButton = document.querySelector('.nav__btn');
+    const mainButton = document.querySelector('.nav__btn'); // Кнопка "Главная"
     const modal = document.getElementById('registrationModal');
     const closeModal = document.getElementById('closeModal');
     const registerButton = document.querySelector('.modal__submit');
@@ -70,21 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mainMain) {
             mainMain.style.display = 'block';
         }
+
+        // Возвращаем хедер в обычное состояние
+        const header = document.querySelector('header');
+        header.classList.remove('header--cats', 'header--dogs');
     });
 
-    // карточки
+    // Карточки
     const cards = document.querySelectorAll('.card');
     const contextWindow = document.getElementById('context_window');
     const contextCloseButton = contextWindow.querySelector('.modal__close'); 
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
-
             const name = card.querySelector('.card__name').textContent;
             const imageSrc = card.querySelector('.image').src;
             const isFemale = card.classList.contains('card--female');
             const isCat = card.classList.contains('card--cat');
-
 
             const contextName = contextWindow.querySelector('.name__pets');
             const contextImage = contextWindow.querySelector('.modal__form .image');
@@ -117,5 +119,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target === contextWindow) {
             contextWindow.style.display = 'none';
         }
+    });
+
+    // Изменение стиля хедера при нажатии на кнопки "Кошечки" и "Собачки"
+    const header = document.querySelector('header');
+    const catsBtn = document.querySelector('.nav__btn--cats');
+    const dogsBtn = document.querySelector('.nav__btn--dogs');
+
+    catsBtn.addEventListener('click', () => {
+        header.classList.remove('header--dogs');
+        header.classList.add('header--cats');
+    });
+
+    dogsBtn.addEventListener('click', () => {
+        header.classList.remove('header--cats');
+        header.classList.add('header--dogs');
     });
 });
