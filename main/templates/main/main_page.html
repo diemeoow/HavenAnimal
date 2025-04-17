@@ -215,16 +215,13 @@
         <div class="modal__content">
             <div class="modal__header">
                 <h2>Авторизация</h2>
-                <img class="modal__close" src="assets/images/btn_exit.png" id="closeModal">
+                {% load static %}
+                <img class="modal__close" src="{% static 'main/images/btn_exit.png' %}" id="closeModal">
             </div>
-            <form class="modal__form">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit" class="modal__submit">Зарегистрироваться</button>
+            <form class="modal__form" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="modal__submit">Войти</button>
             </form>
         </div>
     </div>

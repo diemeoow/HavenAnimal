@@ -12,6 +12,7 @@ class MainPage(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['breeds'] = BreedModel.objects.all()
+        context['header_animal'] = self.request.GET.get('species')
         return context
 
     def get_queryset(self):

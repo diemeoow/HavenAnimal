@@ -121,9 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
             contextWindow.style.display = 'none';
         }
     });
+
 });
 
-// Фильтр по порода
+// Фильтр по породе
 document.querySelectorAll('.breed-radio').forEach(radio => {
     radio.addEventListener('change', function () {
         const params = new URLSearchParams(window.location.search);
