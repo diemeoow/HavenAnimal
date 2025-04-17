@@ -27,61 +27,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // регистрация/навигация
     const profileButton = document.querySelector('.nav__btn--profile');
-    const mainButton = document.querySelector('.nav__btn');
+    const mainButton = document.querySelector('.nav__btn'); // Кнопка "Главная"
     const modal = document.getElementById('registrationModal');
     const closeModal = document.getElementById('closeModal');
     const registerButton = document.querySelector('.modal__submit');
     const mainSections = document.querySelectorAll('main');
 
     profileButton.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        modal.style.display = 'flex';
     });
 
     closeModal.addEventListener('click', () => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
+        modal.style.display = 'none';
     });
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+            modal.style.display = 'none';
         }
     });
 
     registerButton.addEventListener('click', (event) => {
         event.preventDefault();
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
+        modal.style.display = 'none';
 
         mainSections.forEach((section) => {
-            section.classList.add('hidden');
+            section.style.display = 'none';
         });
 
         const adminMain = document.querySelector('main.admin');
         if (adminMain) {
-            adminMain.classList.remove('hidden');
-            adminMain.classList.add('block');
+            adminMain.style.display = 'block';
         }
     });
 
     mainButton.addEventListener('click', () => {
         mainSections.forEach((section) => {
-            section.classList.add('hidden');
+            section.style.display = 'none';
         });
 
         const mainMain = document.querySelector('main.main');
         if (mainMain) {
-            mainMain.classList.remove('hidden');
-            mainMain.classList.add('block');
+            mainMain.style.display = 'block';
         }
     });
 
     // карточки
     const cards = document.querySelectorAll('.card');
     const contextWindow = document.getElementById('context_window');
-    const contextCloseButton = contextWindow.querySelector('.modal__close');
+    const contextCloseButton = contextWindow.querySelector('.modal__close'); 
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -100,29 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
             contextName.textContent = name;
             contextImage.src = imageSrc;
             contextGenderIcon.src = isCat
-                ? isFemale
-                    ? 'assets/images/cat-female.svg'
+                ? contextGenderIcon.src = isFemale 
+                    ? 'assets/images/cat-female.svg' 
                     : 'assets/images/cat-male.svg'
-                : isFemale
-                    ? 'assets/images/dog-female.svg'
+                : contextGenderIcon.src = isFemale
+                    ? 'assets/images/dog-female.svg' 
                     : 'assets/images/dog-male.svg';
-            contextDescription.textContent = `Описание для ${name}`;
-            contextWindow.classList.remove('hidden');
-            contextWindow.classList.add('flex');
+            contextDescription.textContent = `Описание для ${name}`; 
+            contextWindow.style.display = 'flex';
         });
     });
 
+    // Закрытие окна подробностей при клике на крестик
     if (contextCloseButton) {
         contextCloseButton.addEventListener('click', () => {
-            contextWindow.classList.add('hidden');
-            contextWindow.classList.remove('flex');
+            contextWindow.style.display = 'none';
         });
     }
 
+    // Закрытие окна подробностей при клике вне его
     window.addEventListener('click', (event) => {
         if (event.target === contextWindow) {
-            contextWindow.classList.add('hidden');
-            contextWindow.classList.remove('flex');
+            contextWindow.style.display = 'none';
         }
     });
 });
