@@ -70,6 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mainMain) {
             mainMain.style.display = 'block';
         }
+        const header = document.querySelector('header');
+        header.classList.remove('header--cats', 'header--dogs');
     });
 
     // карточки
@@ -117,5 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target === contextWindow) {
             contextWindow.style.display = 'none';
         }
+    });
+    // Изменение стиля хедера при нажатии на кнопки "Кошечки" и "Собачки"
+    const header = document.querySelector('header');
+    const catsBtn = document.querySelector('.nav__btn--cats');
+    const dogsBtn = document.querySelector('.nav__btn--dogs');
+
+    catsBtn.addEventListener('click', () => {
+        header.classList.remove('header--dogs');
+        header.classList.add('header--cats');
+    });
+
+    dogsBtn.addEventListener('click', () => {
+        header.classList.remove('header--cats');
+        header.classList.add('header--dogs');
     });
 });

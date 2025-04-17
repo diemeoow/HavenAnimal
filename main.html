@@ -19,22 +19,22 @@
         <nav>
             <div class="nav-left">
                 <button class="nav__btn">Главная</button>
-                <button class="nav__btn">Кошечки</button>
+                <button class="nav__btn nav__btn--cats">Кошечки</button>
             </div>
             <h1>Лапки & Хвостики</h1>
             <div class="nav-right">
-                <button class="nav__btn">Собачки</button>
+                <button class="nav__btn nav__btn--dogs">Собачки</button>
                 <button class="nav__btn nav__btn--profile">
                     <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path id="Icon"
-                                d="M16.3333 18.25V16.4167C16.3333 15.4442 15.947 14.5116 15.2594 13.8239C14.5717 13.1363 13.6391 12.75 12.6667 12.75H5.33332C4.36086 12.75 3.42823 13.1363 2.7406 13.8239C2.05296 14.5116 1.66666 15.4442 1.66666 16.4167V18.25M12.6667 5.41667C12.6667 7.44171 11.025 9.08333 8.99999 9.08333C6.97495 9.08333 5.33332 7.44171 5.33332 5.41667C5.33332 3.39162 6.97495 1.75 8.99999 1.75C11.025 1.75 12.6667 3.39162 12.6667 5.41667Z"
-                                stroke="#FFEED2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <path id="Icon"
+                        d="M16.3333 18.25V16.4167C16.3333 15.4442 15.947 14.5116 15.2594 13.8239C14.5717 13.1363 13.6391 12.75 12.6667 12.75H5.33332C4.36086 12.75 3.42823 13.1363 2.7406 13.8239C2.05296 14.5116 1.66666 15.4442 1.66666 16.4167V18.25M12.6667 5.41667C12.6667 7.44171 11.025 9.08333 8.99999 9.08333C6.97495 9.08333 5.33332 7.44171 5.33332 5.41667C5.33332 3.39162 6.97495 1.75 8.99999 1.75C11.025 1.75 12.6667 3.39162 12.6667 5.41667Z"
+                        stroke="#FFEED2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
             </div>
         </nav>
     </header>
-
+    
     <main class="main"><!--Главная страница -->
         <div class="filters"><!--Фильтрики -->
             <div class="container">
@@ -98,7 +98,7 @@
                         </label>
                     </div>
                 </div>
-
+                
                 <div class="filters__group">
                     <button class="filters__button filters__button--age">Возраст
                         <svg class="filters__arrow" width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,126 +147,127 @@
                     <div class="card__info">
                         <span class="card__icon">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_297)" />
-                                <defs>
-                                    <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg></span>
-                        <p class="card__name">Имя Котика</p>
-                    </div>
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="28" height="28" fill="url(#pattern0_89_297)" />
+                            <defs>
+                                <pattern id="pattern0_89_297" patternContentUnits="objectBoundingBox" width="1"
+                                height="1">
+                                <use xlink:href="#image0_89_297" transform="scale(0.0104167)" />
+                            </pattern>
+                            <image id="image0_89_297" width="96" height="96" preserveAspectRatio="none"
+                            xlink:href="data:image/png;base64,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" />
+                        </defs>
+                    </svg></span>
+                    <p class="card__name">Имя Котика</p>
                 </div>
-                <!-- Карточка кота -->
-                <div class="card card--cat card--male">
-                    <img src="assets/images/b7893704bb147089630595b7c63bc433.jpg" alt="Котик" class="image">
-                    <div class="card__info">
-                        <span class="card__icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_293)" />
-                                <defs>
-                                    <pattern id="pattern0_89_293" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_293" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_293" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg>
-                        </span>
-                        <p class="card__name">Имя Котика</p>
-                    </div>
-                </div>
-                <!-- Карточка собакина -->
-                <div class="card card--dog card--male">
-                    <img src="assets/images/2cdce84c0fc71b9f685eaee93d7a00cd.jpg" alt="Собачка" class="image">
-                    <div class="card__info">
-                        <span class="card__icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect width="28" height="28" fill="url(#pattern0_89_541)" />
-                                <defs>
-                                    <pattern id="pattern0_89_541" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_541" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_541" width="96" height="96" preserveAspectRatio="none"
+            </div>
+            <!-- Карточка кота -->
+            <div class="card card--cat card--male">
+                <img src="assets/images/b7893704bb147089630595b7c63bc433.jpg" alt="Котик" class="image">
+                <div class="card__info">
+                    <span class="card__icon">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="28" height="28" fill="url(#pattern0_89_293)" />
+                        <defs>
+                            <pattern id="pattern0_89_293" patternContentUnits="objectBoundingBox" width="1"
+                            height="1">
+                            <use xlink:href="#image0_89_293" transform="scale(0.0104167)" />
+                        </pattern>
+                        <image id="image0_89_293" width="96" height="96" preserveAspectRatio="none"
+                        xlink:href="data:image/png;base64,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" />
+                    </defs>
+                </svg>
+            </span>
+            <p class="card__name">Имя Котика</p>
+        </div>
+    </div>
+    <!-- Карточка собакина -->
+    <div class="card card--dog card--male">
+        <img src="assets/images/2cdce84c0fc71b9f685eaee93d7a00cd.jpg" alt="Собачка" class="image">
+        <div class="card__info">
+            <span class="card__icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect width="28" height="28" fill="url(#pattern0_89_541)" />
+                <defs>
+                    <pattern id="pattern0_89_541" patternContentUnits="objectBoundingBox" width="1"
+                    height="1">
+                    <use xlink:href="#image0_89_541" transform="scale(0.0104167)" />
+                </pattern>
+                <image id="image0_89_541" width="96" height="96" preserveAspectRatio="none"
                                         xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg>
-                        </span>
-                        <p class="card__name">Имя Собачки</p>
+                                    </defs>
+                                </svg>
+                            </span>
+                            <p class="card__name">Имя Собачки</p>
+                        </div>
                     </div>
-                </div>
-                <!-- Карточка собачки -->
-                <div class="card card--dog card--female">
-                    <img src="assets/images/458ccbd4c29d401410063465159da28f.jpg" alt="Собачка" class="image">
-                    <div class="card__info">
-                        <span class="card__icon">
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                    <!-- Карточка собачки -->
+                    <div class="card card--dog card--female">
+                        <img src="assets/images/458ccbd4c29d401410063465159da28f.jpg" alt="Собачка" class="image">
+                        <div class="card__info">
+                            <span class="card__icon">
+                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <rect width="28" height="28" fill="url(#pattern0_89_544)" />
                                 <defs>
                                     <pattern id="pattern0_89_544" patternContentUnits="objectBoundingBox" width="1"
-                                        height="1">
-                                        <use xlink:href="#image0_89_544" transform="scale(0.0104167)" />
-                                    </pattern>
-                                    <image id="image0_89_544" width="96" height="96" preserveAspectRatio="none"
-                                        xlink:href="data:image/png;base64,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" />
-                                </defs>
-                            </svg>
-                        </span>
-                        <p class="card__name">Имя Собачки</p>
-                    </div>
-                </div>
-                 
-            </div>
-        </section>
-    </main>
-    <div class="modal" id="registrationModal"><!--Окно регистрации -->
-        <div class="modal__content">
-            <div class="modal__header">
-                <h2>Авторизация</h2>
-                <img class="modal__close" src="assets/images/btn_exit.png" id="closeModal">
-            </div>
-            <form class="modal__form">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required>
-                
-                <button type="submit" class="modal__submit">Войти</button>
-            </form>
-        </div>
-    </div>
-
-     <div class="modal" id="context_window"> <!--Окно подробностей -->
-        <div class="modal__content container modal__content--context">
-            <div class="modal__header modal__header--context">
-                <img src="" class="image_gender">
-                <h2 class="name__pets">Имя котика</h2>
-                <img class="modal__close" src="assets/images/btn_exit.png" alt="Close">
-            </div>
-            <div class="modal__form">
-                <img src="assets/images/b7893704bb147089630595b7c63bc433.jpg" class="image">
-                <p>Описание котика</p>
-                <div class="btn__group">
-                    <button class="btn__group--reservation">Забронировать</button>
-                    <div class="btn__owner" id="owner">
-                        <button class="btn__owner btn__owner--edit"><img src="assets/images/icon-edit.png"></button>
-                        <button class="btn__owner btn__owner--delete"><img src="assets/images/icon-delete.png"></button>
-                    </div>
+                                    height="1">
+                                    <use xlink:href="#image0_89_544" transform="scale(0.0104167)" />
+                                </pattern>
+                                <image id="image0_89_544" width="96" height="96" preserveAspectRatio="none"
+                                xlink:href="data:image/png;base64,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" />
+                            </defs>
+                        </svg>
+                    </span>
+                    <p class="card__name">Имя Собачки</p>
                 </div>
             </div>
+            
         </div>
-
+    </section>
+</main>
+<div class="modal" id="registrationModal"><!--Окно регистрации -->
+    <div class="modal__content">
+        <div class="modal__header">
+            <h2>Авторизация</h2>
+            <img class="modal__close" src="assets/images/btn_exit.png" id="closeModal">
+        </div>
+        <form class="modal__form">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required class="border border-gray-300 rounded p-2 w-full mb-3">
+            
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required class="border border-gray-300 rounded p-2 w-full mb-3">
+            
+            <button type="submit" class="modal__submit">Войти</button>
+        </form>
     </div>
-    <script src="assets/js/app.js"></script>
+</div>
+
+<div class="modal" id="context_window"> <!--Окно подробностей -->
+    <div class="modal__content container modal__content--context">
+        <div class="modal__header modal__header--context">
+            <img src="" class="image_gender">
+            <h2 class="name__pets">Имя котика</h2>
+            <img class="modal__close" src="assets/images/btn_exit.png" alt="Close">
+        </div>
+        <div class="modal__form">
+            <img src="assets/images/b7893704bb147089630595b7c63bc433.jpg" class="image">
+            <p>Описание котика</p>
+            <div class="btn__group">
+                <button class="btn__group--reservation">Забронировать</button>
+                <div class="btn__owner" id="owner">
+                    <button class="btn__owner btn__owner--edit"><img src="assets/images/icon-edit.png"></button>
+                    <button class="btn__owner btn__owner--delete"><img src="assets/images/icon-delete.png"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
