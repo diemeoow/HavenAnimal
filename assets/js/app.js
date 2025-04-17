@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Фильтры
+    // фильтры
     const filterButtons = document.querySelectorAll('.filters__button');
 
     filterButtons.forEach(button => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Регистрация/навигация
+    // регистрация/навигация
     const profileButton = document.querySelector('.nav__btn--profile');
     const mainButton = document.querySelector('.nav__btn');
     const modal = document.getElementById('registrationModal');
@@ -76,22 +76,27 @@ document.addEventListener('DOMContentLoaded', () => {
             mainMain.classList.remove('hidden');
             mainMain.classList.add('block');
         }
+<<<<<<< HEAD
 
         const header = document.querySelector('header');
         header.classList.remove('header--cats', 'header--dogs');
+=======
+>>>>>>> parent of 7c81e2e (header)
     });
 
-    // Карточки
+    // карточки
     const cards = document.querySelectorAll('.card');
     const contextWindow = document.getElementById('context_window');
     const contextCloseButton = contextWindow.querySelector('.modal__close');
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
+
             const name = card.querySelector('.card__name').textContent;
             const imageSrc = card.querySelector('.image').src;
             const isFemale = card.classList.contains('card--female');
             const isCat = card.classList.contains('card--cat');
+
 
             const contextName = contextWindow.querySelector('.name__pets');
             const contextImage = contextWindow.querySelector('.modal__form .image');
@@ -126,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contextWindow.classList.remove('flex');
         }
     });
+<<<<<<< HEAD
 
     // Изменение стиля хедера
     const header = document.querySelector('header');
@@ -154,4 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+=======
+>>>>>>> parent of 7c81e2e (header)
 });
