@@ -76,12 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mainMain.classList.remove('hidden');
             mainMain.classList.add('block');
         }
-<<<<<<< HEAD
-
-        const header = document.querySelector('header');
-        header.classList.remove('header--cats', 'header--dogs');
-=======
->>>>>>> parent of 7c81e2e (header)
     });
 
     // карточки
@@ -131,35 +125,4 @@ document.addEventListener('DOMContentLoaded', () => {
             contextWindow.classList.remove('flex');
         }
     });
-<<<<<<< HEAD
-
-    // Изменение стиля хедера
-    const header = document.querySelector('header');
-    const catsBtn = document.querySelector('.nav__btn--cats');
-    const dogsBtn = document.querySelector('.nav__btn--dogs');
-
-    catsBtn.addEventListener('click', () => {
-        header.classList.remove('header--dogs', 'bg-header-gradient', 'bg-dogs-gradient');
-        header.classList.add('header--cats', 'bg-cats-gradient');
-    });
-
-    dogsBtn.addEventListener('click', () => {
-        header.classList.remove('header--cats', 'bg-header-gradient', 'bg-cats-gradient');
-        header.classList.add('header--dogs', 'bg-dogs-gradient');
-    });
-
-    // Динамическое добавление стиля для радиокнопок
-    const radioInputs = document.querySelectorAll('.filters__option input[type="radio"]');
-    radioInputs.forEach(input => {
-        input.addEventListener('change', () => {
-            const radioSpan = input.nextElementSibling;
-            if (input.checked) {
-                radioSpan.classList.add('after:content-[""]', 'after:absolute', 'after:top-1/2', 'after:left-1/2', 'after:w-3', 'after:h-3', 'after:bg-gray-700', 'after:rounded-full', 'after:-translate-x-1/2', 'after:-translate-y-1/2');
-            } else {
-                radioSpan.classList.remove('after:content-[""]', 'after:absolute', 'after:top-1/2', 'after:left-1/2', 'after:w-3', 'after:h-3', 'after:bg-gray-700', 'after:rounded-full', 'after:-translate-x-1/2', 'after:-translate-y-1/2');
-            }
-        });
-    });
-=======
->>>>>>> parent of 7c81e2e (header)
 });
