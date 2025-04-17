@@ -27,51 +27,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Регистрация/навигация
     const profileButton = document.querySelector('.nav__btn--profile');
-    const mainButton = document.querySelector('.nav__btn'); // Кнопка "Главная"
+    const mainButton = document.querySelector('.nav__btn');
     const modal = document.getElementById('registrationModal');
     const closeModal = document.getElementById('closeModal');
     const registerButton = document.querySelector('.modal__submit');
     const mainSections = document.querySelectorAll('main');
 
     profileButton.addEventListener('click', () => {
-        modal.style.display = 'flex';
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
     });
 
     closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
     });
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
-            modal.style.display = 'none';
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
         }
     });
 
     registerButton.addEventListener('click', (event) => {
         event.preventDefault();
-        modal.style.display = 'none';
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
 
         mainSections.forEach((section) => {
-            section.style.display = 'none';
+            section.classList.add('hidden');
         });
 
         const adminMain = document.querySelector('main.admin');
         if (adminMain) {
-            adminMain.style.display = 'block';
+            adminMain.classList.remove('hidden');
+            adminMain.classList.add('block');
         }
     });
 
     mainButton.addEventListener('click', () => {
         mainSections.forEach((section) => {
-            section.style.display = 'none';
+            section.classList.add('hidden');
         });
 
         const mainMain = document.querySelector('main.main');
         if (mainMain) {
-            mainMain.style.display = 'block';
+            mainMain.classList.remove('hidden');
+            mainMain.classList.add('block');
         }
 
-        // Возвращаем хедер в обычное состояние
         const header = document.querySelector('header');
         header.classList.remove('header--cats', 'header--dogs');
     });
@@ -79,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Карточки
     const cards = document.querySelectorAll('.card');
     const contextWindow = document.getElementById('context_window');
-    const contextCloseButton = contextWindow.querySelector('.modal__close'); 
+    const contextCloseButton = contextWindow.querySelector('.modal__close');
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -96,43 +101,57 @@ document.addEventListener('DOMContentLoaded', () => {
             contextName.textContent = name;
             contextImage.src = imageSrc;
             contextGenderIcon.src = isCat
-                ? contextGenderIcon.src = isFemale 
-                    ? 'assets/images/cat-female.svg' 
+                ? isFemale
+                    ? 'assets/images/cat-female.svg'
                     : 'assets/images/cat-male.svg'
-                : contextGenderIcon.src = isFemale
-                    ? 'assets/images/dog-female.svg' 
+                : isFemale
+                    ? 'assets/images/dog-female.svg'
                     : 'assets/images/dog-male.svg';
-            contextDescription.textContent = `Описание для ${name}`; 
-            contextWindow.style.display = 'flex';
+            contextDescription.textContent = `Описание для ${name}`;
+            contextWindow.classList.remove('hidden');
+            contextWindow.classList.add('flex');
         });
     });
 
-    // Закрытие окна подробностей при клике на крестик
     if (contextCloseButton) {
         contextCloseButton.addEventListener('click', () => {
-            contextWindow.style.display = 'none';
+            contextWindow.classList.add('hidden');
+            contextWindow.classList.remove('flex');
         });
     }
 
-    // Закрытие окна подробностей при клике вне его
     window.addEventListener('click', (event) => {
         if (event.target === contextWindow) {
-            contextWindow.style.display = 'none';
+            contextWindow.classList.add('hidden');
+            contextWindow.classList.remove('flex');
         }
     });
 
-    // Изменение стиля хедера при нажатии на кнопки "Кошечки" и "Собачки"
+    // Изменение стиля хедера
     const header = document.querySelector('header');
     const catsBtn = document.querySelector('.nav__btn--cats');
     const dogsBtn = document.querySelector('.nav__btn--dogs');
 
     catsBtn.addEventListener('click', () => {
-        header.classList.remove('header--dogs');
-        header.classList.add('header--cats');
+        header.classList.remove('header--dogs', 'bg-header-gradient', 'bg-dogs-gradient');
+        header.classList.add('header--cats', 'bg-cats-gradient');
     });
 
     dogsBtn.addEventListener('click', () => {
-        header.classList.remove('header--cats');
-        header.classList.add('header--dogs');
+        header.classList.remove('header--cats', 'bg-header-gradient', 'bg-cats-gradient');
+        header.classList.add('header--dogs', 'bg-dogs-gradient');
+    });
+
+    // Динамическое добавление стиля для радиокнопок
+    const radioInputs = document.querySelectorAll('.filters__option input[type="radio"]');
+    radioInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            const radioSpan = input.nextElementSibling;
+            if (input.checked) {
+                radioSpan.classList.add('after:content-[""]', 'after:absolute', 'after:top-1/2', 'after:left-1/2', 'after:w-3', 'after:h-3', 'after:bg-gray-700', 'after:rounded-full', 'after:-translate-x-1/2', 'after:-translate-y-1/2');
+            } else {
+                radioSpan.classList.remove('after:content-[""]', 'after:absolute', 'after:top-1/2', 'after:left-1/2', 'after:w-3', 'after:h-3', 'after:bg-gray-700', 'after:rounded-full', 'after:-translate-x-1/2', 'after:-translate-y-1/2');
+            }
+        });
     });
 });
