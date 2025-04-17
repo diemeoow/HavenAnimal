@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // регистрация/навигация
     const profileButton = document.querySelector('.nav__btn--profile');
-    const mainButton = document.querySelector('.nav__btn'); // Кнопка "Главная"
+    const mainButton = document.querySelector('.nav__btn');
     const modal = document.getElementById('registrationModal');
     const closeModal = document.getElementById('closeModal');
     const registerButton = document.querySelector('.modal__submit');
