@@ -28,36 +28,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // регистрация/навигация
     const profileButton = document.querySelector('.nav__btn--profile');
     const mainButton = document.querySelector('.nav__btn');
-    const modal = document.getElementById('registrationModal');
+    const modal = document.getElementById('main.registration');
     const closeModal = document.getElementById('closeModal');
-    const registerButton = document.querySelector('.modal__submit');
     const mainSections = document.querySelectorAll('main');
+    const registrationPage = document.querySelector('main.registration');
+    const mainMain = document.querySelector('main.main');
+
+    // При старте показываем только главную страницу
+    mainSections.forEach((section) => {
+        section.style.display = 'none';
+    });
+    if (mainMain) {
+        mainMain.style.display = 'block';
+    }
 
     profileButton.addEventListener('click', () => {
-        modal.style.display = 'flex';
-    });
-
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-
-    registerButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        modal.style.display = 'none';
-
+        // Скрываем все секции <main>
         mainSections.forEach((section) => {
             section.style.display = 'none';
         });
 
-        const adminMain = document.querySelector('main.admin');
-        if (adminMain) {
-            adminMain.style.display = 'block';
+        // Показываем <main class="registration">
+        if (registrationPage) {
+            registrationPage.style.display = 'flex';
         }
     });
 
@@ -66,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             section.style.display = 'none';
         });
 
-        const mainMain = document.querySelector('main.main');
         if (mainMain) {
             mainMain.style.display = 'block';
         }
