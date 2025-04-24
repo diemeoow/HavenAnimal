@@ -36,3 +36,7 @@ class MainPage(ListView):
                 cards = cards.filter(age__gte=7)
 
         return cards
+
+
+def owner_page(request):
+    return render(request, 'main/owner_page.html')

@@ -5,21 +5,34 @@
 Авторизация владельца питомника
 {% endblock %}
 
+
+
 {% block content %}
-<div class="login-container">
-    <h2>Авторизация</h2>
-
-    <form class="login-form" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if form.errors %}
-        <div class="form-errors">
-            {{ form.non_field_errors }}
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+    }
+</style>
+<main class="">
+    <!-- Блок регистрации -->
+    <div class="modal__content">
+        <div class="modal__header">
+            <h2>Вход для Владельца</h2>
+            <h4>Авторизация</h4>
         </div>
-        {% endif %}
-        <button type="submit" class="login-submit">Войти</button>
-    </form>
-
-    <a href="{% url 'home' %}">← Назад на главную</a>
-</div>
+        <form class="modal__form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if form.errors %}
+            <div class="form-errors">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            <button type="submit" class="modal__submit">Войти</button>
+        </form>
+    </div>
+</main>
 {% endblock %}

@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path('', views.MainPage.as_view(), name='home'),
+    path('owner', views.owner_page, name='owner')
 ]

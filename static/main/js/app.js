@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerButton = document.querySelector('.modal__submit');
     const mainSections = document.querySelectorAll('main');
 
-    profileButton.addEventListener('click', () => {
-        modal.style.display = 'flex';
-    });
+//    profileButton.addEventListener('click', () => {
+//        modal.style.display = 'flex';
+//    });
 
     closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
@@ -121,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
             contextWindow.style.display = 'none';
         }
     });
-
 });
 
 // Фильтр по породе
