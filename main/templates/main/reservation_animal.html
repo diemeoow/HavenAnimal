@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+Бронирование встречи
+{% endblock %}
+
+
+
+{% block content %}
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+    }
+    input {
+        background: #fffaf2;
+    }
+    .modal__content {
+        height: auto;
+    }
+</style>
+<main>
+    <!-- Блок регистрации -->
+    <div class="modal__content">
+        <div class="modal__header">
+            <h4>Бронирование встречи</h4>
+        </div>
+        <form class="modal__form" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <p>
+                <label class="form-label" for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+            </p>
+            {% if field.name == 'date' %}
+                <input type="datetime-local"
+                       id="{{ field.id_for_label }}"
+                       name="{{ field.name }}"
+                       value="{{ field.value|date:'Y-m-d' }}"
+                       min="{{ now|date:'Y-m-d\\TH:i' }}"
+                       class="form-control"/>
+            {% else %}
+                {{ field }}
+            {% endif %}
+            {% endfor %}
+            <div class="form-errors">{{ form.errors  }}</div>
+            <button type="submit" class="modal__submit">Бронировать</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

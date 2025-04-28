@@ -1,7 +1,10 @@
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 
-from .models import AnimalCardModel, SpeciesModel, BreedModel
+from .forms import ReservationAnimalForm
+from .models import AnimalCardModel, SpeciesModel, BreedModel, BookModel
 
 
 class MainPage(ListView):
@@ -16,7 +19,7 @@ class MainPage(ListView):
         return context
 
     def get_queryset(self):
-        cards = AnimalCardModel.objects.all()
+        cards = AnimalCardModel.objects.filter(animal_reservation=False)
 
         species_slug = self.request.GET.get('species')
         gender = self.request.GET.get('gender')
@@ -38,5 +41,28 @@ class MainPage(ListView):
         return cards
 
 
-def owner_page(request):
-    return render(request, 'main/owner_page.html')
+class OwnerPage(ListView):
+    model = BookModel
+    template_name = "main/owner_page.html"
+    context_object_name = 'reservations'
+
+
+class ReservationAnimal(CreateView):
+    form_class = ReservationAnimalForm
+    template_name = "main/reservation_animal.html"
+    success_url = reverse_lazy('home')
+
+    def get_animal_card(self):
+        return get_object_or_404(AnimalCardModel, slug=self.kwargs.get('card_slug'))
+
+    def form_valid(self, form):
+        animal_card = self.get_animal_card()
+        form.instance.animal_card = animal_card
+        animal_card.animal_reservation = True
+        animal_card.save()
+        return super().form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.get_animal_card().animal_reservation is True:
+            return HttpResponseRedirect(reverse_lazy('home'))
+        return super().dispatch(request, *args, **kwargs)

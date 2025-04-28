@@ -66,7 +66,8 @@ class AnimalPhotoModel(models.Model):
     animal_card = models.ForeignKey(AnimalCardModel, on_delete=models.SET_NULL, null=True, related_name="photos")
 
     def __str__(self):
-        return self.animal_card.name
+        return self.animal_card.name if self.animal_card else "Нету имени"
+
 
     class Meta:
         verbose_name = 'Фотография'
@@ -78,7 +79,7 @@ class BookModel(models.Model):
     master_name = models.CharField(max_length=100, blank=False, null=True, verbose_name="Имя хозяина")
     phone_number = models.CharField(max_length=20, unique=True, blank=False, null=True, verbose_name="Номер телефона")
     animal_card = models.ForeignKey(AnimalCardModel, on_delete=models.SET_NULL, null=True, related_name="book")
-    date = models.DateField(null=True, blank=False, verbose_name="Дата бронивания")
+    date = models.DateTimeField(null=True, blank=False, verbose_name="Дата бронивания")
 
     def __str__(self):
         return f"{self.date}"

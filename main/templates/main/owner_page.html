@@ -7,8 +7,31 @@
 
 
 {% block content %}
-<br>
-<br>
-<br>
-<p>Пока ничего нет.</p>
+<main class="main">
+        <div class="container">
+            <h2 >Добро пожаловать, Владелец!</h2>
+            <p>Здесь вы можете просматривать информацию о брони животных.</p>
+            <section>
+                <h3>Забронированные животные</h3>
+                    <div class="cards">
+                        <div class="container">
+                        {% for reservation in reservations %}
+                        <div class="card">
+                        <div class="card__info">
+                            <p class="card__name">{{ reservation.animal_card.name }}</p>
+                        </div>
+                        <div class="card__details">
+                            <p class="card__details card__details--num">Номер вольера: {{ reservation.animal_card.number_animal_cage }}</p>
+                            <p class="card__details card__details--name">Имя владельца: {{ reservation.master_name }}</p>
+                            <p class="card__details card__details--numberPhone">Телефон: {{ reservation.phone_number  }}</p>
+                            <p class="card__details card__details--time">Время брони: {{ reservation.date }}</p>
+                        </div>
+                        <button class="btn__group--reservation owner--button">Принять</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 {% endblock %}

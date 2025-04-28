@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.card');
     const contextWindow = document.getElementById('context_window');
     const contextCloseButton = contextWindow.querySelector('.modal__close');
+    const reserveButton = contextWindow.querySelector('#reserveButton');
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -84,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageSrc = card.querySelector('.image').src;
             const isFemale = card.classList.contains('card--female');
             const description = card.getAttribute('data-description');
+            const slug = card.getAttribute('data-animal-slug');
             const isCat = card.classList.contains('card--cat'); // Извлекаем описание
 
             // Обновляем содержимое окна подробностей
@@ -91,17 +93,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const contextImage = contextWindow.querySelector('.modal__form .image');
             const contextGenderIcon = contextWindow.querySelector('.modal__header img');
             const contextDescription = contextWindow.querySelector('.modal__form p');
+            const reserveButton = contextWindow.querySelector('.modal__form button');
+            const reservationLink = contextWindow.querySelector('.modal__form a'); // <-- ссылка на кнопку
 
             contextName.textContent = name;
             contextImage.src = imageSrc;
             contextGenderIcon.src = isCat
-                ? contextGenderIcon.src = isFemale
+                ? isFemale
                     ? 'static/main/images/cat-female.svg'
                     : 'static/main/images/cat-male.svg'
-                : contextGenderIcon.src = isFemale
+                : isFemale
                     ? 'static/main/images/dog-female.svg'
                     : 'static/main/images/dog-male.svg';
             contextDescription.textContent = description; // Обновляем описание
+
+            reserveButton.onclick = () => {
+                window.location.href = `/reservation_animal/${slug}/`;
+            };
 
             // Показываем окно
             contextWindow.style.display = 'flex';

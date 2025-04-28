@@ -100,7 +100,7 @@
                 {% if card.species.name == 'Кот' %}
                     {% if card.gender == 'female' %}
                         <!-- Карточка кошечки -->
-                        <div class="card card--cat card--female" data-description="{{ card.description }}"> <!-- Передача описание в модальное окно -->
+                        <div class="card card--cat card--female" data-animal-slug="{{ card.slug }}" data-description="{{ card.description }}"> <!-- Передача описание в модальное окно -->
                             <img src="{{ card.photos.first.photo.url }}" alt="Котик" class="image">
                             <div class="card__info">
                                 <span class="card__icon">
@@ -121,7 +121,7 @@
                         </div>
                     {% else %}
                         <!-- Карточка кота -->
-                        <div class="card card--cat card--male" data-description="{{ card.description }}">
+                        <div class="card card--cat card--male" data-animal-slug="{{ card.slug }}" data-description="{{ card.description }}">
                             <img src="{{ card.photos.first.photo.url }}" alt="Котик" class="image">
                             <div class="card__info">
                                 <span class="card__icon">
@@ -145,7 +145,7 @@
                 {% else %}
                     {% if card.gender != 'female' %}
                         <!-- Карточка собакина -->
-                       <div class="card card--dog card--male" data-description="{{ card.description }}">
+                       <div class="card card--dog card--male" data-animal-slug="{{ card.slug }}" data-description="{{ card.description }}">
                             <img src="{{ card.photos.first.photo.url }}" alt="Собачка" class="image">
                             <div class="card__info">
                                 <span class="card__icon">
@@ -167,7 +167,7 @@
                         </div>
                     {% else %}
                         <!-- Карточка собачки -->
-                         <div class="card card--dog card--female" data-description="{{ card.description }}">
+                         <div class="card card--dog card--female" data-animal-slug="{{ card.slug }}" data-description="{{ card.description }}" onclick="openModal(this)">
                             <img src="{{ card.photos.first.photo.url }}" alt="Собачка" class="image">
                             <div class="card__info">
                                 <span class="card__icon">
@@ -219,8 +219,6 @@
                 <img class="modal__close" src="{% static 'main/images/btn_exit.png' %}" id="closeModal">
             </div>
             <form class="modal__form" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
                 <button type="submit" class="modal__submit">Войти</button>
             </form>
         </div>
@@ -236,7 +234,7 @@
             <div class="modal__form">
                 <img src="assets/images/b7893704bb147089630595b7c63bc433.jpg" class="image">
                 <p>Описание котика</p>
-                <button>Забронировать</button>
+                <button id="reserveButton">Забронировать</button>
             </div>
         </div>
     </div>
